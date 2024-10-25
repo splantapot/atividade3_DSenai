@@ -90,9 +90,9 @@ app.get('/home', async (req, res) => {
 });
 app.post('/home', async (req, res) => {
     const user = req.session.user;
-    const {nome} = req.body;
+    const {nome, dataInicio, dataFim} = req.body;
     // res.send(`${nome} :::: ${user.id}`)
-    await manageDB.addProjeto(nome, user.id);
+    await manageDB.addProjeto(nome, user.id, dataInicio, dataFim);
     res.redirect('/home?success=1');
 });
 app.get('/del-projeto', async (req, res) => {

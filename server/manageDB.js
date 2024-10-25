@@ -46,10 +46,10 @@ function addUsuario(nome, email, senha, db = DEFAULT_DB) {
     });
 }
 
-function addProjeto(nome, usuario_lider, db = DEFAULT_DB) {
+function addProjeto(nome, usuario_lider, dataInicio, dataFim, db = DEFAULT_DB) {
     return new Promise((resolve, reject) => {
-        const query = 'INSERT INTO projetos(nome, usuario_lider) VALUES (?,?);';
-        db.run(query, [nome, usuario_lider], (error) => {
+        const query = 'INSERT INTO projetos(nome, usuario_lider, dataInicio, dataFim) VALUES (?,?,?,?);';
+        db.run(query, [nome, usuario_lider, dataInicio, dataFim], (error) => {
             if (error) {
                 console.error('addProjeto: ', error);
                 reject(error);

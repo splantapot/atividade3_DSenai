@@ -45,7 +45,8 @@
                     <div class="card manager">
                         <%=projeto.projeto_id%> 
                         <label> <%= projeto.nome%> </label> 
-                        <label>Permissão: Gerente</label>
+                        <label>Início: <%=projeto.dataInicio%>| Fim: <%=projeto.dataFim%></label>
+                        <!-- <label>Permissão: Gerente</label> -->
                         <a href="/projeto/<%=projeto.projeto_id%>"><button>Gerenciar</button></a>
                         <button onclick="tryDelete('<%=projeto.projeto_id%>', '<%=projeto.nome%>')">Excluir</button>
                     </div>
@@ -69,6 +70,12 @@
             <div class="fields">
                 <label for="nome">Nome:</label>
                 <input name="nome" placeholder="Ex: CyberPi" required>
+
+                <label for="nome">Data Início:</label>
+                <input type="date" name="dataInicio" required>
+
+                <label for="nome">Data Fim:</label>
+                <input type="date" name="dataFim" required>
             </div>
 
             <input type="submit" class="button" value="Cadastrar">

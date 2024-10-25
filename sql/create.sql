@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS projetos (
     projeto_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     usuario_lider INTEGER NOT NULL,
+    dataInicio TEXT NOT NULL,
+    dataFim TEXT NOT NULL,
     FOREIGN KEY (usuario_lider) REFERENCES usuarios(usuario_id)
 );
 
