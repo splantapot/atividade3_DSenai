@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script>
+        const urlParam = new URLSearchParams(window.location.search);
+        const error = Number(urlParam.get('error'));
+        const success = Number(urlParam.get("success"))
+        if (error) {
+            alert("Erro: Credenciais inválidas!")
+        }
+    </script>
+</head>
+<body>
+    <div class="box centered">
+        <label class="title">Entre no sistema</label>
+        <form action="/" method="post">
+            <div class="fields">
+                <label for="email">Email:</label>
+                <input name="email" type="email" placeholder="Email" required>
+
+                <label for="senha">Senha:</label>
+                <input name="senha" type="password" placeholder="Senha" required>
+            </div>
+
+            <input type="submit" class="button" value="Entrar">
+        </form>
+
+        <a href="/cadastrarUsuario" class="link">Não possui cadastro? Cadastre-se aqui.</a>
+    </div>
+</body>
+</html>

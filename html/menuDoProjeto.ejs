@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Projeto - <%=projeto.projeto_id%></title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/navigator.js" defer></script>
+
+    <script>
+        const urlParam = new URLSearchParams(window.location.search);
+        const success = Number(urlParam.get('success'));
+
+        if (success == 1) {
+            alert('Tarefa cadastrada com sucesso!');
+        } else if (success == 2) {
+            // alert('Tarefa excluída com sucesso!');
+        }
+
+        function tryDelete(descricao, tarefa_id){
+            if (confirm(`Deseja realmente excluir essa tarefa? \n-"${descricao}"`)) {
+                window.location.href = `/del-tarefa/<%=projeto.projeto_id%>/${tarefa_id}`;
+            }
+        }
+
+        function changeStatus(tarefa_id, status) {
+            const statusList = [1, 2, 0];
+            window.location.href = `/end-tarefa?p=<%=projeto.projeto_id%>&t=${tarefa_id}&s=${statusList[status]}`;
+        }
+
+    </script>
+</head>
+<body>
+    <div id="menu-main" class="box centered">
+        <label class="title">Projeto: <%=projeto.nome%></label> <br>
+        <label class="nav-title">Menu de Detalhes do Projeto</label>
+        <div class="fields">
+            <a href="/logout"><button type="button" class="button">Sair</button></a>
+            <a href="/home"><button type="button" class="button">Voltar para o Menu de Projetos</button></a>
+            <a onclick="toggleVisibility('menu-main', 'menu-add-task')">
+                <button type="button" class="button">Registrar Tarefa</button>
+            </a>
+            <!-- <a onclick="toggleVisibility('menu-main', 'menu-members')">
+                <button type="button" class="button">Gerenciar membros</button>
+            </a> -->
+        </div>
+        <br>
+        <label class="subtitle">Tarefas do Projeto:</label>
+
+        <div class="list-box">
+            <% if (tarefas.length === 0) { %>
+                Este projeto não tem tarefas.
+            <% } else { %>
+                <% tarefas.forEach(function(tarefa) { %>
+                    <div class="card s<%=tarefa.status%>">
+                        <% if (tarefa.status == 0) { %>
+                            Em andamento
+                        <% } else if (tarefa.status == 1) { %>
+                            Concluída
+                        <% } else if (tarefa.status == 2) { %>
+                            Cancelada
+                        <% } else { %>
+                            "Erro"
+                        <% } %>
+                        <label><%=tarefa.descricao%></label>
+                        <label>Inicío: <%=tarefa.dataInicio%> | Fim: <%=tarefa.dataFim%></label>
+
+                        <button onclick="changeStatus('<%=tarefa.tarefa_id%>', '<%=tarefa.status%>')">
+                            <% if (tarefa.status == 0) { %>
+                                Concluir
+                            <% } else if (tarefa.status == 1) { %>
+                                Cancelar
+                            <% } else if (tarefa.status == 2) { %>
+                                Iniciar
+                            <% } else { %>
+                                "Erro"
+                            <% } %>
+                        </button>
+                        <button onclick="tryDelete('<%=tarefa.descricao%>', '<%=tarefa.tarefa_id%>')">Excluir</button> 
+                    </div>
+                <% }) %>
+            <% } %>
+
+            <!-- Você não tem tarefas. -->
+            <!-- EXEMPLO DE CARD -->
+            <!-- <div class="card">
+                #id. <label>#nome</label>
+                <label>Inicío: #data | Fim: #data</label>
+                <button>Status</button> 
+                <button>Excluir</button> 
+            </div> -->
+        </div>
+    </div>
+
+    <div id="menu-add-task" class="box centered hide">
+        <label class="title">Cadastro de Tarefa</label>
+        <form action="/projeto/<%=projeto.projeto_id%>" method="post">
+            <br>
+            <div class="fields">
+                <label for="descricao">Descricao:</label>
+                <input name="descricao" placeholder="Ex: Fazer banco de dados..." required>
+
+                <label for="dataInicio">Data Início:</label>
+                <input name="dataInicio" type="date" required>
+
+                <label for="dataFim">Data Fim:</label>
+                <input name="dataFim" type="date" required>
+
+                <label>Status:</label>
+                <select name="status" required>
+                    <option value="" disabled selected>Escolha uma opção</option>
+                    <option value="0">Em andamento</option>
+                    <option value="1">Concluída</option>
+                    <option value="2">Cancelada</option>
+                </select>
+            </div>
+            <input type="submit" class="button" value="Cadastrar">
+        </form>
+
+        <a class="link" onclick="toggleVisibility('menu-add-task', 'menu-main')">Voltar</a>
+    </div>
+
+    <!-- <div id="menu-members" class="box centered hide">
+        <label class="title">Membros:</label>
+        <form action="" method="post">
+            <label>Usuário a adicionar:</label>
+            <select name="user" required>
+                <option value="" disabled selected>Escolha uma opção</option>
+            </select>
+
+            <input type="submit" class="button" value="Adicionar">
+        </form>
+
+        <label class="subtitle">Membros do Projeto:</label>
+        <br><br>
+        <div class="list-box">
+            Não há membros.
+            EXEMPLO DE CARD
+            <div class="card">
+                #id. <label>#nome</label>
+                <label>#email</label>
+                <button>Excluir</button>
+            </div>
+        </div>
+        <br>
+        <a class="link" onclick="toggleVisibility('menu-members', 'menu-main')">Voltar</a>
+    </div> -->
+</body>
+</html>

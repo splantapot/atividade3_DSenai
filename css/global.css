@@ -1,0 +1,260 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: whitesmoke;
+
+    transition: all 100ms;
+}
+
+/* Basics */
+
+body {
+    background-image: url('/images/back.jpg');
+    background-size: cover;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box {
+    width: 400px;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    
+    display: inline-block;
+    text-align: center;
+
+    background-color: rgba(40,40,40,0.7);
+}
+
+.hide {
+    display: none;
+}
+
+.title {
+    font-size: 30px;
+    color: white;
+    font-weight: 700;
+}
+
+.nav-title {
+    font-size: 16px;
+    color: gray;
+    font-weight: 400;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.button {
+    background-color: rgb(255,255,255);
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    color: rgb(40,40,40);
+    margin: 8px;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.button:hover {
+    scale: 1.02;
+    background-color: rgb(200,200,255);
+}
+
+.link {
+    color: rgb(100, 200, 200);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Form */
+
+form {
+    padding: 10px;
+    margin:10px;
+    margin-top: 20px;
+
+    text-align: center;
+    /* border: 1px solid red; */
+
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+form input {
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+
+    font-size: 15px;
+    padding: 4px;
+    margin: 10px;
+
+    color: black;
+}
+
+form label {
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px;
+
+    color: rgb(230, 230, 230);
+}
+
+form div.fields {
+    text-align: start;
+    /* border: 1px solid green; */
+    margin-bottom: 30px;
+}
+
+select {
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+
+    font-size: 15px;
+    padding: 4px;
+    margin: 8px;
+
+    color: black;
+}
+
+select option {
+    color: black;
+}
+
+form .add-member {
+    font-size: 13px;
+    padding: 4px;
+    margin: 2px;
+
+    color: black;
+
+    width: 80px;
+    height: 30px;
+
+    border-radius: 10px;
+}
+
+.add-member:hover {
+    scale: 1.02;
+    background-color: rgb(200,200,255);
+}
+
+/* Generic list box */
+.list-box {
+    margin-top: 10px;
+    margin: auto;
+    padding: 10px;
+    width: auto;
+    max-height: 200px;
+    
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.2);
+
+    text-align: center;
+
+    font-size: 16px;
+    color: black;
+
+    overflow: auto;
+}
+/* Customiza a barra de rolagem no WebKit (Chrome, Safari, Edge) */
+.list-box::-webkit-scrollbar {
+    width: 8px; /* Largura fina da barra de rolagem */
+}
+
+.list-box::-webkit-scrollbar-track {
+    background: transparent; /* Fundo transparente */
+}
+
+.list-box::-webkit-scrollbar-thumb {
+    background-color: rgba(100,100,100,0.1); /* Polegar mais escuro */
+    border-radius: 10px;
+}
+
+.list-box::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(100,100,100,0.8); /* Fica mais visível ao passar o mouse */
+}
+
+/* Cards */
+
+.card {
+    width: 300px;
+    height: 110px;
+    background-color: white;
+    margin: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.card label {
+    color: black;
+    font-size: 16px;
+    font-weight: 300;
+    display: block;
+}
+
+.card button {
+    color: black;
+    font-size: 16px;
+    font-weight: 300;
+
+    padding: 3px;
+    margin: auto;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.card button:hover {
+    scale: 1.02;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+
+    border: 2px solid black;
+}
+
+.card.manager {
+    background-color: rgb(180,255,255);
+}
+
+.card.s0 {
+    background-color: rgb(255,255,150);
+}
+.card.s1 {
+    background-color: rgb(150,255,150);
+}
+.card.s2 {
+    background-color: rgb(255,150,150);   
+}
